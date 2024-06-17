@@ -5,43 +5,43 @@ const reviews_data = [
     img: "../../media/photos/comments/Samuel_Fry.png",
     name: "Liam Smith",
     comment:
-      "Cosa c'è di meglio che indulgere in dolci e vincere alla grande? Plinko Deluxe è il mio preferito per le vittorie più dolci!",
+      "Wat is er beter dan jezelf verwennen met zoetigheden en groots winnen? Plinko Deluxe is mijn favoriet voor de zoetste overwinningen!",
   },
   {
     img: "../../media/photos/comments/comment2.png",
     name: "Olivia Tremblay",
     comment:
-      "Gioco a Plinko Deluxe da settimane - è semplicemente avvincente! Vittorie costanti e tantissimi giri gratuiti. Amo assolutamente questa slot machine!",
+      "Ik speel al weken Plinko Deluxe - het is gewoon verslavend! Constante overwinningen en veel gratis spins. Ik hou absoluut van deze gokautomaat!",
   },
   {
     img: "../../media/photos/comments/comment3.png",
     name: "Noah MacKenzie",
     comment:
-      "Questo gioco è una vera esplosione di zucchero e adrenalina! I colori vivaci e l'azione continua di Plinko Deluxe lo rendono un piacere coinvolgente.",
+      "Dit spel is een echte uitbarsting van suiker en adrenaline! De felle kleuren en de voortdurende actie van Plinko Deluxe maken het tot een meeslepende ervaring.",
   },
   {
     img: "../../media/photos/comments/comment4.png",
     name: "Emma Gagnon",
     comment:
-      "Plinko Deluxe è una delizia per gli occhi e una gioia per il portafoglio! Amo l'emozione costante delle vittorie consecutive e l'abbondanza di giri gratuiti.",
+      "Plinko Deluxe is een lust voor het oog en een vreugde voor de portemonnee! Ik hou van de constante spanning van opeenvolgende overwinningen en de overvloed aan gratis spins.",
   },
   {
     img: "../../media/photos/comments/comment5.png",
     name: "Lucas Leblanc",
     comment:
-      "Non posso fare a meno di questo gioco a tema dolci! Plinko Deluxe è il mio piacere segreto con le sue grafiche fantastiche e il potenziale per grandi vincite.",
+      "Ik kan niet zonder dit zoetigheidsthema spel! Plinko Deluxe is mijn geheime genoegen met zijn fantastische graphics en het potentieel voor grote winsten.",
   },
   {
     img: "../../media/photos/comments/comment6.png",
     name: "Ava Dubois",
     comment:
-      "Questo gioco è come un negozio di caramelle pieno di vincite! I giri gratuiti di Plinko Deluxe portano sempre queste vittorie deliziose.",
+      "Dit spel is als een snoepwinkel vol met winsten! De gratis spins van Plinko Deluxe leveren altijd deze heerlijke overwinningen op.",
   },
   {
     img: "../../media/photos/comments/comment7.png",
     name: "Ethan Roy",
     comment:
-      "Sono assolutamente dipendente da Plinko Deluxe! L'emozione delle vittorie consecutive con la funzione Tumble è insuperabile.",
+      "Sono completamente dipendente da Plinko Deluxe! L'emozione delle vittorie consecutive con la funzione Tumble è semplicemente insuperabile.",
   },
   {
     img: "../../media/photos/comments/comment8.png",
@@ -53,13 +53,13 @@ const reviews_data = [
     img: "../../media/photos/comments/comment9.png",
     name: "Benjamin Beaulieu",
     comment:
-      "Un gioco così divertente! I giri gratuiti di Plinko Deluxe mi fanno sempre tornare e gli effetti visivi sono semplicemente incantevoli.",
+      "Wat een leuk spel! De gratis spins van Plinko Deluxe brengen me altijd terug en de visuele effecten zijn gewoon betoverend.",
   },
   {
     img: "../../media/photos/comments/comment10.png",
     name: "Sophia Caron",
     comment:
-      "Plinko Deluxe non delude mai! Amo l'adrenalina quando le vittorie consecutive continuano a venire. Altamente raccomandato!",
+      "Plinko Deluxe stelt nooit teleur! Ik hou van de adrenaline wanneer de opeenvolgende overwinningen blijven komen. Een absolute aanrader!",
   },
 ];
 
