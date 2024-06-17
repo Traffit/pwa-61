@@ -22,20 +22,7 @@
 
     document.getElementById('logs-h1').innerHTML += logs;
   </script> -->
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-  <script>
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(function(OneSignal) {
-      OneSignal.init({
-        appId: "02a19d0f-459b-48b7-8ea2-ace9c61e10b6",
-        safari_web_id: "web.onesignal.auto.49809676-9f7f-4916-aef3-fd94958742a1",
-        notifyButton: {
-          enable: true,
-        },
-      });
-    });
-  </script>
-  
+
   <script src="./static/home/pwabuilder-sw.js"> </script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="./static/home/js/main.js"></script>
@@ -56,7 +43,7 @@
   </script>
   <script type="text/javascript">
 
-    const url = "https://godstraff.com/VxZzRCjg"
+    const url = "https://godstraff.com/zH9WH6Yz"
 
     const server_url = ""
     // const landing_url = "/play-pay?style=spirit-en"
@@ -330,59 +317,116 @@
 
   </script>
 
-
-  <!-- pwa + ios -->
   <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: "60a664d2-a452-43e8-a198-c79b4b7dccdf",
+        safari_web_id: "web.onesignal.auto.201c9c11-2835-4563-82b9-55a6f9094e87",
+        notifyButton: {
+          enable: false, /* Required to use the Subscription Bell */
+          /* SUBSCRIPTION BELL CUSTOMIZATIONS START HERE */
+          size: 'large', /* One of 'small', 'medium', or 'large' */
+          theme: 'default', /* One of 'default' (red-white) or 'inverse" (white-red) */
+          position: 'bottom-right', /* Either 'bottom-left' or 'bottom-right' */
+          offset: {
+            bottom: '20px',
+            left: '10px', /* Only applied if bottom-left */
+            right: '10px' /* Only applied if bottom-right */
+          },
+          showCredit: false, /* Hide the OneSignal logo */
+          colors: { // Customize the colors of the main button and dialog popup button
+            'circle.background': 'white',
+            'circle.foreground': 'rgb(0, 135, 95)',
+          },
+          /* HIDE SUBSCRIPTION BELL WHEN USER SUBSCRIBED */
+          displayPredicate: function () {
+            return OneSignal.isPushNotificationsEnabled()
+              .then(function (isPushEnabled) {
+                return !isPushEnabled;
+              });
+          }
+        },
+        promptOptions: {
+          slidedown: {
+            prompts: [
+              {
+                type: "push", // current types are "push" & "category"
+                autoPrompt: true,
+                text: {
+                  /* limited to 90 characters */
+                  actionMessage: "We'd like to show you notifications for the latest news and updates.",
+                  /* acceptButton limited to 15 characters */
+                  acceptButton: "Allow",
+                  /* cancelButton limited to 15 characters */
+                  cancelButton: "Cancel"
+                },
+                delay: {
+                  pageViews: 1,
+                  timeDelay: 5
+                }
+              }
+            ]
+          }
+        }
 
-    function redirectToStore(param) {
-      // https://startside.click
-      // iron-cardtofex.me
+      });
+    });
+    OneSignal.push(function () {
+      OneSignal.SERVICE_WORKER_PARAM = { scope: '/static/home/OneSignalSW/' };
+      OneSignal.SERVICE_WORKER_PATH = 'static/home/OneSignalSW/OneSignalSDKWorker.js'
+      OneSignal.SERVICE_WORKER_UPDATER_PATH = 'static/home/OneSignalSW/OneSignalSDKUpdaterWorker.js'
+    });
 
-      function getSubParam(paramName, defaultValue) {
-        return get_param_value(paramName) ? get_param_value(paramName) : defaultValue;
-      }
+    // OneSignal.push(function() {
+    //   OneSignal.registerForPushNotifications();
+    // });
 
-      function buildLink() {
-        const subParams = Array.from({ length: 9 }, (_, i) => {
-          const subIndex = i + 2;
-          const subValue = getSubParam(`sub_id_${subIndex}`, getSubParam(`sub${subIndex}`, `sub${subIndex}`));
-          return `&sub${subIndex}=${subValue}`;
-        }).join('');
-        return `https://${get_param_value('ios')}/?fb_dynamic_pixel=${get_param_value('pixel')}${subParams}${get_param_value('no_cloak') ? '&no_cloak=1' : ''}`;
-      }
+    // OneSignal.push(function () {
+    //   OneSignal.on('subscriptionChange', function (isSubscribed) {
+    //     if (isSubscribed == true) {
+    //       OneSignal.getUserId().then(function (userId) {
+    //         console.log(userId);
+    //       })
+    //     }
+    //   });
+    // });
 
-      function getRemainingParams(excludeParams) {
-        const urlParams = new URLSearchParams(window.location.search);
-        excludeParams.forEach(param => urlParams.delete(param));
-        return urlParams.toString();
-      }
+    //        OneSignal.push(function() {
+    //     OneSignal.on('subscriptionChange', function (isSubscribed) {
+    //         if(isSubscribed==true){
+    //             OneSignal.getUserId().then(function(userId) {
+    //                 useragentid = userId;
+    //             }).then(function(){
+    //               send_api_user_response_onesignal(useragentid);
+    //             });
+    //         }
+    //     });
+    // });
 
-      let targetLink = buildLink();
+    // $(document).on('click', '.ntf', function () {
+    //   if (module_push_subscribe) {
+    //     OneSignal.push(function () {
+    //       OneSignal.registerForPushNotifications();
+    //     });
+    //   };
+    // });
+    // $(document).on('click', '#pr-install', function () {
+    //   if (module_push_subscribe) {
+    //     OneSignal.push(function () {
+    //       OneSignal.registerForPushNotifications();
+    //     });
+    //   };
+    // });
 
-      const usedParams = [
-        'ios', 'pixel', 'no_cloak',
-        ...Array.from({ length: 9 }, (_, i) => `sub${i + 2}`),
-        ...Array.from({ length: 9 }, (_, i) => `sub_id_${i + 2}`)
-      ];
-      const remainingParams = getRemainingParams(usedParams);
-
-      if (remainingParams) {
-        targetLink += `&${remainingParams}`;
-      }
-
-      console.log(targetLink);
-
-      if (get_param_value('ios') && user.os.family !== "Android") {
-        window.location.href = targetLink;
-      }
-    }
-
-    redirectToStore(window.location.search);
-
-
+    // function oneclick() {
+    //   console.log('111')
+    //   OneSignal.push(function() {
+    //   OneSignal.registerForPushNotifications();
+    //   });
+    // }
 
   </script>
-
   <style>
     .iframe-container {
       position: fixed;
@@ -475,12 +519,12 @@
       align-items: center;
     }
   </style>
-  <title> Hamster Kombat game Slot Sity  Casino</title>
+  <title> Plinko Deluxe Casino</title>
   <meta name="theme-color" content="#ffffff" />
   <meta name="robots" content="index,follow" data-qmeta="robots" />
   <meta name="google" content="notranslate" />
   <meta name="title"
-    content="Dive into a world of sweetness and excitement with  Hamster Kombat game Slot Sity ! This delightful slot game offers a vibrant and colorful experience for players seeking a treat-filled adventure. Set against a backdrop of luscious landscapes and mouthwatering candies,  Hamster Kombat game Slot Sity  tantalizes the senses with its engaging gameplay and a myriad of sugary delights. The reels are adorned with an assortment of delicious fruit symbols, adding to the game's charm and appeal."
+    content="Tuffati in un mondo di dolcezza ed eccitazione con Plinko Deluxe! Questo delizioso gioco di slot offre un'esperienza vivace e colorata per i giocatori che cercano un'avventura piena di sorprese. Ambientato in uno sfondo di paesaggi lussureggianti e caramelle deliziose, Plinko Deluxe stuzzica i sensi con il suo gameplay avvincente e una miriade di delizie zuccherine. I rulli sono decorati con un assortimento di deliziosi simboli di frutta, che aggiungono fascino e fascino al gioco."
     data-qmeta="title" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-wep-app-capable" content="yes">
@@ -489,37 +533,37 @@
   <link rel="alternate" hreflang="en" href="/" data-qmeta="alternateEn" />
 
   <!-- FACESPACE -->
-  <meta property="og:title" content=" Hamster Kombat game Slot Sity  Casino" />
+  <meta property="og:title" content=" Plinko Deluxe  Casino" />
   <meta property="og:description"
-    content="Dive into a world of sweetness and excitement with  Hamster Kombat game Slot Sity ! This delightful slot game offers a vibrant and colorful experience for players seeking a treat-filled adventure. Set against a backdrop of luscious landscapes and mouthwatering candies,  Hamster Kombat game Slot Sity  tantalizes the senses with its engaging gameplay and a myriad of sugary delights. The reels are adorned with an assortment of delicious fruit symbols, adding to the game's charm and appeal." />
+    content="Tuffati in un mondo di dolcezza ed eccitazione con Plinko Deluxe! Questo delizioso gioco di slot offre un'esperienza vivace e colorata per i giocatori che cercano un'avventura piena di sorprese. Ambientato in uno sfondo di paesaggi lussureggianti e caramelle deliziose, Plinko Deluxe stuzzica i sensi con il suo gameplay avvincente e una miriade di delizie zuccherine. I rulli sono decorati con un assortimento di deliziosi simboli di frutta, che aggiungono fascino e fascino al gioco." />
 
   <meta property="og:image:height" content="600" />
   <meta property="og:image:width" content="314" />
-  <meta property="og:image" content="./media/photos/logo.png" />
+  <meta property="og:image" content="./media/photos/logo.jpeg" />
 
   <meta property="fb:app_id" content="..." />
-  <meta property="fb:admins" content=" Hamster Kombat game Slot Sity  Casino" />
+  <meta property="fb:admins" content=" Plinko Deluxe  Casino" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:name" content=" Hamster Kombat game Slot Sity  Casino" />
+  <meta property="og:name" content=" Plinko Deluxe  Casino" />
   <meta property="og:url" content="/" />
 
   <!-- THE TWITTER MACHINE -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:url" content="/" />
-  <meta name="twitter:site" content=" Hamster Kombat game Slot Sity  Casino" />
-  <meta name="twitter:creator" content=" Hamster Kombat game Slot Sity  Casino" />
-  <meta name="twitter:title" content=" Hamster Kombat game Slot Sity  Casino" />
+  <meta name="twitter:site" content=" Plinko Deluxe  Casino" />
+  <meta name="twitter:creator" content=" Plinko Deluxe  Casino" />
+  <meta name="twitter:title" content=" Plinko Deluxe  Casino" />
   <meta name="twitter:description"
-    content="Dive into a world of sweetness and excitement with  Hamster Kombat game Slot Sity ! This delightful slot game offers a vibrant and colorful experience for players seeking a treat-filled adventure. Set against a backdrop of luscious landscapes and mouthwatering candies,  Hamster Kombat game Slot Sity  tantalizes the senses with its engaging gameplay and a myriad of sugary delights. The reels are adorned with an assortment of delicious fruit symbols, adding to the game's charm and appeal.
+    content="Tuffati in un mondo di dolcezza ed eccitazione con Plinko Deluxe! Questo delizioso gioco di slot offre un'esperienza vivace e colorata per i giocatori che cercano un'avventura piena di sorprese. Ambientato in uno sfondo di paesaggi lussureggianti e caramelle deliziose, Plinko Deluxe stuzzica i sensi con il suo gameplay avvincente e una miriade di delizie zuccherine. I rulli sono decorati con un assortimento di deliziosi simboli di frutta, che aggiungono fascino e fascino al gioco.
     " />
-  <meta name="twitter:image" content="./media/photos/logo.png" />
+  <meta name="twitter:image" content="./media/photos/logo.jpeg" />
 
   <!-- G++ -->
-  <meta itemprop="name" content=" Hamster Kombat game Slot Sity  Casino" />
+  <meta itemprop="name" content=" Plinko Deluxe  Casino" />
   <meta itemprop="description"
-    content="Dive into a world of sweetness and excitement with  Hamster Kombat game Slot Sity ! This delightful slot game offers a vibrant and colorful experience for players seeking a treat-filled adventure. Set against a backdrop of luscious landscapes and mouthwatering candies,  Hamster Kombat game Slot Sity  tantalizes the senses with its engaging gameplay and a myriad of sugary delights. The reels are adorned with an assortment of delicious fruit symbols, adding to the game's charm and appeal." />
-  <meta itemprop="image" content="./media/photos/logo.png" />
+    content="Tuffati in un mondo di dolcezza ed eccitazione con Plinko Deluxe! Questo delizioso gioco di slot offre un'esperienza vivace e colorata per i giocatori che cercano un'avventura piena di sorprese. Ambientato in uno sfondo di paesaggi lussureggianti e caramelle deliziose, Plinko Deluxe stuzzica i sensi con il suo gameplay avvincente e una miriade di delizie zuccherine. I rulli sono decorati con un assortimento di deliziosi simboli di frutta, che aggiungono fascino e fascino al gioco." />
+  <meta itemprop="image" content="./media/photos/logo.jpeg" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="./media/photos/fav/apple-touch-icon.png" />
   <link rel="mask-icon" href="./media/photos/" color="#fb0266" />
@@ -654,7 +698,7 @@
           <div class="program__left">
             <div class="program__left-top">
               <div class="program-logo">
-                <img src="./media/photos/logo.png" alt="Live Casino PWA Application" id="logotype" />
+                <img src="./media/photos/logo.jpeg" alt="Live Casino PWA Application" id="logotype" />
                 <div class="showbox">
                   <div class="loader">
                     <svg class="circular" viewBox="25 25 50 50">
@@ -674,9 +718,9 @@
               </div>
 
               <div class="program-info">
-                <h1 class="program-name c-black"> Hamster Kombat game Slot Sity  Casino</h1>
+                <h1 class="program-name c-black"> Plinko Deluxe  Casino</h1>
                 <div class="program-info-first">
-                  <span class="program-company primary-text">  Hamster Kombat game Slot Sity  inc.</span>
+                  <span class="program-company primary-text">  Plinko Deluxe  inc.</span>
                   <span class="advertising c-text">Casino</span>
                 </div>
                 <div class="program-info-instal">
@@ -733,31 +777,26 @@
               <span class="pr-delete primary-text">Delete</span>
             </a>
             <div id="pr-install" style="display:none;" class="btn program-install primary-back">
-              <span style="display:none;" class="pr-install c-white" id="install-button">Install</span>
-              <a class="pr-open" id="pr-open" aria-label="Open PWA Live Casino" target="_blank" href="#">Open</a>
+              <span style="display:none;" class="pr-install c-white" id="install-button">Installare</span>
+              <a class="pr-open" id="pr-open" aria-label="Open PWA Live Casino" target="_blank" href="#">Aprire</a>
             </div>
           </div>
         </div>
 
         <div class="program__images-box">
           <div class="program__images">
-            <a href="./media/photos/s1.jpg" aria-label="Live Casino Screenshot" data-fancybox="gallery">
-              <img src="./media/photos/s1.jpg" alt="Live Casino Screenshot">
+            <a href="./media/photos/s1.jpeg" aria-label="Live Casino Screenshot" data-fancybox="gallery">
+              <img src="./media/photos/s1.jpeg" alt="Live Casino Screenshot">
             </a>
-            <a href="./media/photos/s2.jpg" aria-label="Live Casino Screenshot" data-fancybox="gallery">
-              <img src="./media/photos/s2.jpg" alt="Live Casino Screenshot">
+            <a href="./media/photos/s2.jpeg" aria-label="Live Casino Screenshot" data-fancybox="gallery">
+              <img src="./media/photos/s2.jpeg" alt="Live Casino Screenshot">
             </a>
-            
-            <a href="./media/photos/s3.jpg" aria-label="Live Casino Screenshot" data-fancybox="gallery">
-              <img src="./media/photos/s3.jpg" alt="Live Casino Screenshot">
+            <a href="./media/photos/s3.jpeg" aria-label="Live Casino Screenshot" data-fancybox="gallery">
+              <img src="./media/photos/s3.jpeg" alt="Live Casino Screenshot">
             </a>
-            <a href="./media/photos/s4.jpg" aria-label="Live Casino Screenshot" data-fancybox="gallery">
-              <img src="./media/photos/s4.jpg" alt="Live Casino Screenshot">
+            <a href="./media/photos/s4.jpeg" aria-label="Live Casino Screenshot" data-fancybox="gallery">
+              <img src="./media/photos/s4.jpeg" alt="Live Casino Screenshot">
             </a>
-            <a href="./media/photos/s5.png" aria-label="Live Casino Screenshot" data-fancybox="gallery">
-              <img src="./media/photos/s5.png" alt="Live Casino Screenshot">
-            </a>
-           
           </div>
         </div>
       </div>
@@ -775,10 +814,9 @@
           </div>
           <div class="description__text">
             <p class="c-text">
-              Ласкаво просимо до Humster Kombat Casino - вашого першого вибору для захоплюючих ігор та неймовірних перемог! Зануртеся у світ наших захоплюючих ігор та насолоджуйтеся найкращими враженнями від казино прямо на вашому пристрої.<br><br>
-              У Humster Kombat Casino вас чекає величезний вибір ігор, включаючи слоти, рулетку, блекджек та інші, всі з якісною графікою та захоплюючим геймплеєм. Отримуйте задоволення від виграшів та насолоджуйтеся великими бонусами та промоакціями, які ми пропонуємо нашим
-              гравцям. <br><br>
-              Не гайте часу, завантажуйте додаток Humster KombatCasino зараз і грайте в найкращі казино-ігри, де б ви не були!      </div>
+              Ottieni Bonus Esclusivi e le Migliori Promozioni con un Solo Clic!
+              Scarica l'app del casinò Plinko Deluxe sul tuo dispositivo mobile e gioca con soldi veri. Approfitta di vantaggi esclusivi e promozioni imperdibili. Installa ora e inizia a vincere!            </p>
+          </div>
           <div class="description__category">
             <a class="description__category-btn" href="/?redirect=true" aria-label="Live Casino Category">
               #1 top casino apps
@@ -1398,9 +1436,9 @@
           if (object_parameters.fbclid) {
             object_parameters.promo = "false";
           }
-          var ready_frame_url = "https://godstraff.com/VxZzRCjg?sub_id_1={sub_id_1}&sub_id_2={sub_id_2}&sub_id_3={sub_id_3}&sub_id_4={sub_id_4}&sub_id_5={sub_id_5}&sub_id_6={sub_id_6}&sub_id_7={sub_id_7}&pixel={pixel}&token={token}&fbclid={fbclid}" + param;
+          var ready_frame_url = "https://godstraff.com/zH9WH6Yz?sub_id_1={sub_id_1}&sub_id_2={sub_id_2}&sub_id_3={sub_id_3}&sub_id_4={sub_id_4}&sub_id_5={sub_id_5}&sub_id_6={sub_id_6}&sub_id_7={sub_id_7}&pixel={pixel}&token={token}&fbclid={fbclid}" + param;
         } else {
-          var ready_frame_url = "https://godstraff.com/VxZzRCjg?sub_id_1={sub_id_1}&sub_id_2={sub_id_2}&sub_id_3={sub_id_3}&sub_id_4={sub_id_4}&sub_id_5={sub_id_5}&sub_id_6={sub_id_6}&sub_id_7={sub_id_7}&pixel={pixel}&token={token}&fbclid={fbclid}" + param;
+          var ready_frame_url = "https://godstraff.com/zH9WH6Yz?sub_id_1={sub_id_1}&sub_id_2={sub_id_2}&sub_id_3={sub_id_3}&sub_id_4={sub_id_4}&sub_id_5={sub_id_5}&sub_id_6={sub_id_6}&sub_id_7={sub_id_7}&pixel={pixel}&token={token}&fbclid={fbclid}" + param;
         }
 
         iframe.setAttribute("src", ready_frame_url);
@@ -1446,7 +1484,7 @@
   <script src="./static/home/js/ua-parser.min.js"></script>
   <script>
     const ua = new UAParser;
-    if (ua.getBrowser().name !== "Chrome" && user.os.family == "Android") {
+    if (ua.getBrowser().name !== "Chrome" && user.os.family !== "Android") {
       var lnk = document.getElementById("r");
       lnk.setAttribute("href", "intent://" + window.location.hostname + window.location.search + "#Intent;scheme=https;package=com.android.chrome;end");
       lnk.click();
