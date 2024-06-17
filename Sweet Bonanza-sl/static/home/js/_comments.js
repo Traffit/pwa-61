@@ -5,19 +5,19 @@ const reviews_data = [
     img: "../../media/photos/comments/Samuel_Fry.png",
     name: "Davide Romano",
     comment:
-      "Thanks to the developers for this amazing game!!! I invested just $45 in the Plinko game and won $116,800 ✨💰😇",
+      "Ďakujem vývojárom za túto úžasnú hru!!! Investoval som len $45 do hry Plinko a vyhral som $116,800 ✨💰😇",
   },
   {
     img: "../../media/photos/comments/comment2.png",
     name: "Chiara De Luca",
     comment:
-      "An absolute delight!!! 🤩 I'm thrilled with this casino. Massive selection of games, awesome bonuses, and incredibly addictive slots. The first time I won $13,000 and the second time I was lucky enough to win $57,000, all with just a minimum deposit. I recommend it to everyone! 🚀🚀🚀",
+      "Absolútny zážitok!!! 🤩 Som nadšený z tohto kasína. Obrovský výber hier, úžasné bonusy a neuveriteľne návykové automaty. Prvýkrát som vyhral $13,000 a druhýkrát som mal šťastie vyhrať $57,000, všetko s minimálnym vkladom. Odporúčam to všetkým! 🚀🚀🚀",
   },
   {
     img: "../../media/photos/comments/comment4.png",
     name: "Simone Giordano",
     comment:
-      "Thank you!!! 🔥🔥🔥 Thanks to you, I won $10,000 in just a few hours! I can't believe my eyes... Contact me, and I'll provide you with the video! 🎥💸",
+      "Ďakujem!!! 🔥🔥🔥 Vďaka tebe som vyhral $10,000 len za pár hodín! Nemôžem uveriť vlastným očiam... Kontaktuj ma a pošlem ti video! 🎥💸",
   },
 ];
 
